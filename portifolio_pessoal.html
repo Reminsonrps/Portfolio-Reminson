@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Portfólio Pessoal</title>
+    <!-- Link para a fonte Inter do Google Fonts para uma tipografia moderna e legível -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Estilos globais e reset básico */
+        :root {
+            --primary-color: #4A90E2; /* Azul vibrante para elementos principais */
+            --secondary-color: #FFC107; /* Amarelo para destaque */
+            --dark-bg: #2C3E50; /* Fundo escuro para seções */
+            --light-bg: #ECF0F1; /* Fundo claro para seções */
+            --text-color: #34495E; /* Cor do texto principal */
+            --light-text-color: #ECF0F1; /* Cor do texto para fundos escuros */
+            --border-radius: 8px; /* Raio de borda padrão para elementos */
+            --transition-speed: 0.3s; /* Velocidade padrão para transições */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--light-bg);
+            scroll-behavior: smooth; /* Rolagem suave ao clicar nos links de navegação */
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary-color);
+            transition: color var(--transition-speed) ease;
+        }
+
+        a:hover {
+            color: var(--secondary-color);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Estilos do cabeçalho (Header) */
+        header {
+            background-color: var(--dark-bg);
+            color: var(--light-text-color);
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            position: sticky; /* Fixa o cabeçalho no topo da página */
+            top: 0;
+            z-index: 1000; /* Garante que o cabeçalho fique acima de outros elementos */
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap; /* Permite que os itens quebrem a linha em telas menores */
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--light-text-color);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 25px; /* Espaçamento entre os itens do menu */
+        }
+
+        nav a {
+            color: var(--light-text-color);
+            font-weight: 600;
+            padding: 0.5rem 0;
+            position: relative;
+            transition: color var(--transition-speed) ease;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background-color: var(--secondary-color);
+            bottom: 0;
+            left: 0;
+            transition: width var(--transition-speed) ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Estilos das seções principais */
+        section {
+            padding: 80px 20px;
+            text-align: center;
+            min-height: 100vh; /* Garante que cada seção ocupe pelo menos a altura da viewport */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative; /* Para posicionamento de elementos internos */
+        }
+
+        section:nth-of-type(even) { /* Estilo para seções pares (alterna cores de fundo) */
+            background-color: var(--light-bg);
+            color: var(--text-color);
+        }
+
+        section:nth-of-type(odd) { /* Estilo para seções ímpares */
+            background-color: var(--dark-bg);
+            color: var(--light-text-color);
+        }
+
+        h1, h2 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+            color: inherit; /* Herda a cor da seção */
+        }
+
+        h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+            color: inherit;
+        }
+
+        p {
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto 20px auto;
+            line-height: 1.8;
+        }
+
+        /* Estilos da seção "Sobre Mim" */
+        #sobre-mim .profile-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 30px;
+            border: 5px solid var(--primary-color);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Estilos da seção "Formação Educacional e Idiomas" */
+        .education-list, .language-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-top: 30px;
+            max-width: 800px;
+            width: 100%;
+            text-align: left;
+        }
+
+        .education-item, .language-item {
+            background-color: rgba(255, 255, 255, 0.1); /* Fundo semi-transparente para itens em seções escuras */
+            border-radius: var(--border-radius);
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+        }
+
+        section:nth-of-type(even) .education-item,
+        section:nth-of-type(even) .language-item {
+            background-color: #fff; /* Fundo branco para itens em seções claras */
+            color: var(--text-color);
+        }
+
+        .education-item:hover, .language-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .education-item h4, .language-item h4 {
+            font-size: 1.4rem;
+            margin-bottom: 5px;
+            color: var(--primary-color);
+        }
+
+        .education-item p, .language-item p {
+            font-size: 1rem;
+            margin-bottom: 5px;
+            max-width: none; /* Remove a largura máxima para parágrafos dentro de itens */
+        }
+
+        .education-item span, .language-item span {
+            font-size: 0.9rem;
+            color: #95A5A6; /* Cor cinza para datas/níveis */
+        }
+
+        /* Estilos da seção "Portfólio" */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Layout responsivo de grid */
+            gap: 30px;
+            margin-top: 40px;
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        .portfolio-item {
+            background-color: #fff;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+            text-align: left;
+            color: var(--text-color);
+        }
+
+        section:nth-of-type(odd) .portfolio-item {
+            background-color: rgba(255, 255, 255, 0.1); /* Fundo semi-transparente para itens em seções escuras */
+            color: var(--light-text-color);
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+            border-bottom: 1px solid #eee;
+        }
+
+        .portfolio-item-content {
+            padding: 20px;
+        }
+
+        .portfolio-item-content h4 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+
+        .portfolio-item-content p {
+            font-size: 1rem;
+            margin-bottom: 15px;
+            max-width: none;
+        }
+
+        .portfolio-item-content a {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: background-color var(--transition-speed) ease;
+        }
+
+        .portfolio-item-content a:hover {
+            background-color: var(--secondary-color);
+            color: var(--dark-bg);
+        }
+
+        /* Estilos da seção "Contato" - Formulário */
+        .contact-form {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: var(--border-radius);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+            max-width: 600px;
+            width: 100%;
+            text-align: left;
+            color: var(--text-color);
+        }
+
+        section:nth-of-type(odd) .contact-form {
+            background-color: rgba(255, 255, 255, 0.1); /* Fundo semi-transparente para itens em seções escuras */
+            color: var(--light-text-color);
+        }
+
+        .contact-form label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .contact-form input[type="text"],
+        .contact-form input[type="email"],
+        .contact-form textarea {
+            width: 100%;
+            padding: 12px 15px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            font-family: 'Inter', sans-serif;
+            transition: border-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+            background-color: #f9f9f9;
+        }
+
+        section:nth-of-type(odd) .contact-form input,
+        section:nth-of-type(odd) .contact-form textarea {
+            background-color: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.3);
+            color: var(--light-text-color);
+        }
+
+        section:nth-of-type(odd) .contact-form input::placeholder,
+        section:nth-of-type(odd) .contact-form textarea::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.2);
+            outline: none;
+        }
+
+        .contact-form textarea {
+            resize: vertical; /* Permite redimensionar verticalmente */
+            min-height: 120px;
+        }
+
+        .contact-form button {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: 700;
+            transition: background-color var(--transition-speed) ease, transform 0.1s ease;
+            width: 100%;
+        }
+
+        .contact-form button:hover {
+            background-color: var(--secondary-color);
+            color: var(--dark-bg);
+            transform: translateY(-2px);
+        }
+
+        .contact-form button:active {
+            transform: translateY(0);
+        }
+
+        /* Estilos do rodapé (Footer) */
+        footer {
+            background-color: var(--dark-bg);
+            color: var(--light-text-color);
+            text-align: center;
+            padding: 2rem 0;
+            font-size: 0.9rem;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Media Queries para responsividade */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 15px;
+                margin-top: 20px;
+            }
+
+            nav a {
+                font-size: 1.1rem;
+            }
+
+            h1, h2 {
+                font-size: 2.2rem;
+            }
+
+            h3 {
+                font-size: 1.5rem;
+            }
+
+            p {
+                font-size: 1rem;
+                padding: 0 10px;
+            }
+
+            section {
+                padding: 60px 15px;
+            }
+
+            .portfolio-grid {
+                grid-template-columns: 1fr; /* Uma coluna em telas menores */
+            }
+
+            .contact-form {
+                padding: 30px 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo {
+                font-size: 1.5rem;
+            }
+
+            nav ul {
+                gap: 10px;
+            }
+
+            h1, h2 {
+                font-size: 1.8rem;
+            }
+
+            h3 {
+                font-size: 1.3rem;
+            }
+
+            .education-item h4, .language-item h4 {
+                font-size: 1.2rem;
+            }
+
+            .portfolio-item-content h4 {
+                font-size: 1.3rem;
+            }
+
+            .contact-form button {
+                font-size: 1rem;
+                padding: 12px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Cabeçalho da página com navegação -->
+    <header>
+        <div class="container">
+            <div class="logo">Meu Portfólio</div>
+            <nav>
+                <ul>
+                    <li><a href="#sobre-mim">Sobre Mim</a></li>
+                    <li><a href="#formacao">Formação</a></li>
+                    <li><a href="#portfolio">Portfólio</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Seção "Sobre Mim" -->
+    <section id="sobre-mim">
+        <div class="container">
+            <!-- Imagem de perfil (placeholder) -->
+            <img src="https://placehold.co/200x200/4A90E2/FFFFFF?text=Sua+Foto" alt="Sua Foto de Perfil" class="profile-image">
+            <h2>Sobre Mim</h2>
+            <p>Olá! Meu nome é [Seu Nome] e sou um desenvolvedor apaixonado por criar soluções inovadoras e eficientes. Com foco em [sua área de especialização, ex: desenvolvimento web front-end], busco constantemente aprender novas tecnologias e aprimorar minhas habilidades.</p>
+            <p>Nos meus momentos de lazer, adoro [hobby 1, ex: ler livros de ficção científica], [hobby 2, ex: praticar esportes ao ar livre] e [hobby 3, ex: explorar novas linguagens de programação]. Acredito que a combinação de paixão e dedicação é a chave para o sucesso em qualquer área.</p>
+        </div>
+    </section>
+
+    <!-- Seção "Formação Educacional e Idiomas" -->
+    <section id="formacao">
+        <div class="container">
+            <h2>Formação Educacional e Idiomas</h2>
+
+            <h3>Minha Formação</h3>
+            <div class="education-list">
+                <div class="education-item">
+                    <h4>[Nome do Curso/Graduação]</h4>
+                    <p>[Nome da Instituição de Ensino]</p>
+                    <span>[Ano de Início] - [Ano de Conclusão]</span>
+                    <p>Descrição breve: [Ex: Foco em desenvolvimento de sistemas web com ênfase em interfaces de usuário e bancos de dados.]</p>
+                </div>
+                <div class="education-item">
+                    <h4>[Outro Curso/Pós-Graduação/Certificação]</h4>
+                    <p>[Nome da Instituição/Plataforma]</p>
+                    <span>[Ano de Início] - [Ano de Conclusão]</span>
+                    <p>Descrição breve: [Ex: Aprofundamento em arquitetura de software e metodologias ágeis.]</p>
+                </div>
+            </div>
+
+            <h3>Idiomas</h3>
+            <div class="language-list">
+                <div class="language-item">
+                    <h4>Português</h4>
+                    <p>Nativo</p>
+                </div>
+                <div class="language-item">
+                    <h4>Inglês</h4>
+                    <p>Avançado (C1)</p>
+                </div>
+                <div class="language-item">
+                    <h4>Espanhol</h4>
+                    <p>Intermediário (B2)</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção "Portfólio" -->
+    <section id="portfolio">
+        <div class="container">
+            <h2>Meu Portfólio</h2>
+            <p>Aqui estão alguns dos projetos que desenvolvi. Clique para ver mais detalhes ou acessar o projeto online.</p>
+            <div class="portfolio-grid">
+                <!-- Item de Portfólio 1 -->
+                <div class="portfolio-item">
+                    <!-- Imagem de placeholder para o projeto -->
+                    <img src="https://placehold.co/400x200/FFC107/34495E?text=Projeto+1" alt="Imagem do Projeto 1">
+                    <div class="portfolio-item-content">
+                        <h4>Projeto de Site Responsivo</h4>
+                        <p>Um site desenvolvido do zero com HTML e CSS puro, demonstrando design responsivo para diferentes tamanhos de tela.</p>
+                        <a href="https://example.com/projeto1" target="_blank">Ver Projeto</a>
+                    </div>
+                </div>
+
+                <!-- Item de Portfólio 2 -->
+                <div class="portfolio-item">
+                    <img src="https://placehold.co/400x200/4A90E2/FFFFFF?text=Projeto+2" alt="Imagem do Projeto 2">
+                    <div class="portfolio-item-content">
+                        <h4>Aplicação de Lista de Tarefas</h4>
+                        <p>Uma aplicação interativa de lista de tarefas, construída com HTML, CSS e JavaScript básico.</p>
+                        <a href="https://example.com/projeto2" target="_blank">Ver Projeto</a>
+                    </div>
+                </div>
+
+                <!-- Item de Portfólio 3 -->
+                <div class="portfolio-item">
+                    <img src="https://placehold.co/400x200/2C3E50/ECF0F1?text=Projeto+3" alt="Imagem do Projeto 3">
+                    <div class="portfolio-item-content">
+                        <h4>Página de Destino (Landing Page)</h4>
+                        <p>Design moderno e otimizado para conversão, utilizando técnicas avançadas de CSS.</p>
+                        <a href="https://example.com/projeto3" target="_blank">Ver Projeto</a>
+                    </div>
+                </div>
+
+                <!-- Adicione mais itens de portfólio conforme necessário -->
+                <div class="portfolio-item">
+                    <img src="https://placehold.co/400x200/ECF0F1/34495E?text=Projeto+4" alt="Imagem do Projeto 4">
+                    <div class="portfolio-item-content">
+                        <h4>Galeria de Imagens Interativa</h4>
+                        <p>Uma galeria de imagens com efeitos de transição e visualização em tela cheia.</p>
+                        <a href="https://example.com/projeto4" target="_blank">Ver Projeto</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção "Contato" -->
+    <section id="contato">
+        <div class="container">
+            <h2>Entre em Contato</h2>
+            <p>Tem alguma pergunta, projeto em mente ou quer apenas bater um papo? Preencha o formulário abaixo e entrarei em contato o mais breve possível.</p>
+            <form class="contact-form">
+                <label for="nome">Nome:</label>
+                <input type="text" id="nome" name="nome" placeholder="Seu nome completo" required>
+
+                <label for="email">E-mail:</label>
+                <input type="email" id="email" name="email" placeholder="seu.email@exemplo.com" required>
+
+                <label for="mensagem">Mensagem:</label>
+                <textarea id="mensagem" name="mensagem" placeholder="Sua mensagem aqui..." required></textarea>
+
+                <button type="submit">Enviar Mensagem</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Rodapé da página -->
