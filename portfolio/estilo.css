@@ -1,0 +1,188 @@
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+
+  background-image: url("portifolio.png");
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: #333;
+
+  padding-top: 120px;
+}
+
+/* --- Cabeçalho --- */
+header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+
+  background-color: #0a407e;
+  color: white;
+  text-align: center;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+  z-index: 1000; /* Garante que o header fique acima de outros conteúdos */
+  padding: 1rem 0;
+}
+
+header h1 {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+}
+
+/* --- Navegação Principal --- */
+nav ul {
+  list-style: none;
+  background-color: #0c1c7a;
+  display: flex;
+  justify-content: center;
+}
+
+nav > ul > li {
+  /*  position: relative para ser a referência do submenu */
+  position: relative;
+}
+
+nav > ul > li > a {
+  display: block;
+  padding: 15px 25px;
+  color: white;
+  text-decoration: none;
+  transition: background-color 0.3s, border-color 0.3s;
+
+  border-bottom: 3px solid transparent;
+}
+
+nav > ul > li > a:hover {
+    border-radius: 15px 15px 0 0  /* Borda arredondada no topo */;
+    background-color: #1be7e7;
+    color: #fff;
+
+  border-bottom-color: #8a1667;
+}
+
+/* --- Submenu --- */
+.submenu {
+
+  display: none;
+
+  position: absolute;
+  top: 100%; /* Aparece logo abaixo do item pai */
+  left: 0;
+  background-color: #0c1c7a;
+  list-style: none;
+  padding: 10px 0;
+  min-width: 180px;
+  border-radius: 0 0 5px 5px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.submenu li {
+    width: 100%;
+}
+
+.submenu a {
+  padding: 10px 20px;
+  display: block;
+  color: white;
+  text-decoration: none;
+  transition: background-color 0.3s;
+}
+
+.submenu a:hover {
+  background-color: #1be7e7;
+  color: #0c1c7a;
+  font-weight: bold;
+}
+
+/* Mostra o submenu quando o mouse passa sobre o <li> pai */
+nav > ul > li:hover > .submenu {
+  display: block;
+}
+
+/* --- Conteúdo Principal --- */
+main {
+  max-width: 900px;
+ 
+  margin: 2rem auto;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.95); /* Fundo branco com leve transparência */
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+}
+
+
+
+section {
+  padding-top: 20px; /* Espaçamento para o conteúdo dentro da seção */
+  margin-bottom: 40px;
+}
+
+section h2 {
+  color: #222;
+  border-bottom: 2px solid #00c3ff;
+  padding-bottom: 8px;
+  margin-bottom: 20px;
+}
+
+/* --- Lista de Projetos (seção Portfólio) --- */
+#portfolio ul {
+  list-style-type: circle;
+  padding-left: 20px;
+}
+
+#portfolio ul a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+#portfolio ul a:hover {
+    text-decoration: underline;
+    color: #0056b3;
+}
+
+/* --- Formulário --- */
+.form-group {
+  margin-bottom: 1rem;
+}
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #bbb;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+button[type="submit"] {
+  background-color: #007bff;
+  color: white;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;/* Botão de envio estilizado */
+  font-weight: bold; /* Negrito para destacar o botão */
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover { /*efeito de hover no botão de envio*/
+  background-color: #0056b3;/* Tema escuro mantido intencionalmente para destacar visualmente esta seção */
+}

@@ -1,0 +1,130 @@
+  /* Estiliza a seção de redes sociais */
+  body {
+    top: 0;
+    margin: 200px;
+    background-color: #2941ad;
+    width: 70%;
+    font-family: Arial, sans-serif;
+
+}
+h1 {
+  color: #fff;
+  font-size: 2rem;  
+  text-align: center;
+  /*bordas no titulo*/
+    text-shadow:
+    -1px -1px 0 #000,  
+     2px -1px 0 #000,
+    -1px  1px 0 #000,
+     1px  1px 0 #000;
+}
+ 
+        .redes-sociais {
+  margin-top: 3rem;
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+  text-align: center;
+}
+/* Estilo do título da seção */
+
+.redes-sociais h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  color: #333;
+}
+/* Container flexível para os blocos de contato */
+.contato-blocos {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+/* Estilo base para cada bloco de contato */
+.bloco {
+  width: 140px;
+  padding: 1rem;
+  border-radius: 12px;
+  text-decoration: none;
+  color: #333;
+  background-color: #f7f7f7;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.bloco img {
+  width: 50px;
+  height: 50px;
+  margin-bottom: 0.5rem;
+  border-radius: 50%;
+  background-color: #fff;
+  padding: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.bloco span {
+  font-weight: bold;
+  margin-top: 0.5rem;
+}
+
+.bloco:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* Cores específicas no hover */
+.bloco.facebook:hover {
+  background-color: #1877f2;
+  color: #fff;
+}
+
+.bloco.instagram:hover {
+  background-color: #e1306c;
+  color: #fff;
+}
+.bloco.youtube:hover {
+  background-color: #ff0000;
+  color: #fff;
+}
+
+.bloco.whatsapp:hover {
+  background-color: #25d366;
+  color: #fff;
+}
+
+/* Responsivo para se adaptar aos tamanhos de tela */
+@media (max-width: 600px) {
+  .contato-blocos {
+    flex-direction: column;
+    align-items: center;
+  }}
+/* Estilo do botão de voltar */
+ .estilo {
+      display: inline-block;
+      width: 150px;
+      padding:12px 24px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      text-decoration: none;
+      font-size: 1rem;
+      transition: background-color 0.3s ease;
+    }
+
+.estilo:hover {
+   background-color: #1be7e7;
+  color: #fff;
+}
+/*retirei o sublinhado do link*/
+.estilo a {
+  color: #fff;
+  text-decoration: none;
+}
+.estilo:hover{
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}

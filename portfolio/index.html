@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfólio de Reminson</title>
+
+  <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+
+  <header>
+    <h1>Bem-vindo ao meu Portfólio</h1>
+    <nav>
+      <ul>
+       
+        <li><a href="sobre.html">Sobre mim</a></li>
+        <li><a href="formacao.html">Formação</a></li>
+        <li><a href="portfolio.html">Portfólio</a></li>
+      
+        <li>
+          <a href="submenu.html">Contato</a>
+          <!-- O submenu fica dentro do <li> principal -->
+          <ul class="submenu">
+            <li><a href="https://www.linkedin.com/" target="_blank">LinkedIn</a></li>
+            <li><a href="https://github.com/Reminsonrps" target="_blank">GitHub</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+
+  <main>
+    
+    <section id="sobre">
+      <h2>Sobre mim</h2>
+   
+      <p>Olá! Meu nome é Reminson. Sou natural de Porto Seguro, Bahia, e atualmente moro em Santa Cruz Cabrália.</p>
+      <p>Gosto de tecnologia, aprender coisas novas e sou apaixonado por desenvolvimento web. Meus hobbies incluem música, eletrônica, séries e explorar ferramentas criativas.</p>
+    </section>
+
+    <section id="formacao">
+      <h2>Formação e Idiomas</h2>
+      <p>Sou estudante da <span style="color: blue;">UNINTER</span> em Análise e Desenvolvimento de Sistemas.
+         Tenho conhecimentos em HTML, CSS, Python e JavaScript.</p>
+    </section>
+
+    <section id="portfolio">
+      <h2>Portfólio</h2>
+      <p>Aqui estão alguns projetos que desenvolvi:</p>
+      <ul>
+        <li><a href="https://github.com/Reminsonrps/Reminsonrps/blob/main/cadastro_livros.py" target="_blank">Programa de cadastro de Livros em Python</a></li>
+        <li><a href="#" target="_blank">Em breve: Novo Projeto</a></li>
+      </ul>
+    </section>
+
+    <section id="contato">
+      <h2>Contato</h2>
+  
+      <form action="#" method="post">
+        <div class="form-group">
+          <label for="nome">Nome:</label>
+          <input type="text" id="nome" name="nome" required>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+
+        <div class="form-group">
+          <label for="mensagem">Mensagem:</label>
+          <textarea id="mensagem" name="mensagem" rows="5" placeholder="Deixe seu comentário..." required></textarea>
+        </div>
+
+        <button type="submit" class="submit-button">Enviar</button>
+      </form>
+    </section>
+  </main>
+
+
+  <footer>
+    <p>© 2025 Reminson. Todos os direitos reservados.</p>
+  </footer>
+
+</body>
+</html>
