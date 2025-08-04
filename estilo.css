@@ -1,84 +1,89 @@
 
-
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-
-
+/*  Estilo geral do corpo da página */
 body {
-  font-family: 'Segoe UI', sans-serif;
-
-  background-image: url("portifolio.png");
+  font-family: 'Roboto', sans-serif;
+  background-image: url("portifolio.png"); /* Imagem de fundo personalizada */
   background-size: cover;
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
   color: #333;
-
-  padding-top: 120px;
+  padding: 20px;
 }
 
-/* --- Cabeçalho --- */
+/* Camada escura sobre a imagem de fundo para melhorar contraste */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(0,0,0,0.3);
+  z-index: -1;
+}
+
+/* Cabeçalho fixo no topo da página */
 header {
   position: fixed;
   width: 100%;
   top: 0;
   left: 0;
-
   background-color: #0a407e;
   color: white;
   text-align: center;
   box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-  z-index: 1000; /* Garante que o header fique acima de outros conteúdos */
+  z-index: 1000;
   padding: 1rem 0;
 }
 
+/* Título principal estilizado */
 header h1 {
-    font-size: 1.8rem;
-    margin-bottom: 0.5rem;
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
 }
 
-/* --- Navegação Principal --- */
+/*  Menu de navegação horizontal */
 nav ul {
   list-style: none;
-  background-color: #0c1c7a;
+  background-color: #1c35be;
   display: flex;
   justify-content: center;
 }
 
+/* Cada item do menu */
 nav > ul > li {
-  /*  position: relative para ser a referência do submenu */
   position: relative;
 }
 
+/* Links do menu principal */
 nav > ul > li > a {
   display: block;
   padding: 15px 25px;
   color: white;
   text-decoration: none;
   transition: background-color 0.3s, border-color 0.3s;
-
   border-bottom: 3px solid transparent;
 }
 
+/* Efeito hover nos links do menu */
 nav > ul > li > a:hover {
-    border-radius: 15px 15px 0 0  /* Borda arredondada no topo */;
-    background-color: #1be7e7;
-    color: #fff;
-
+  border-radius: 15px 15px 0 0;
+  background-color: #1be7e7;
+  color: #fff;
   border-bottom-color: #8a1667;
 }
 
-/* --- Submenu --- */
+/* Submenu oculto por padrão */
 .submenu {
-
   display: none;
-
   position: absolute;
-  top: 100%; /* Aparece logo abaixo do item pai */
+  top: 100%;
   left: 0;
   background-color: #0c1c7a;
   list-style: none;
@@ -88,10 +93,12 @@ nav > ul > li > a:hover {
   box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 
+/* Itens do submenu */
 .submenu li {
-    width: 100%;
+  width: 100%;
 }
 
+/* Links do submenu */
 .submenu a {
   padding: 10px 20px;
   display: block;
@@ -100,68 +107,90 @@ nav > ul > li > a:hover {
   transition: background-color 0.3s;
 }
 
+/* Hover nos links do submenu */
 .submenu a:hover {
   background-color: #1be7e7;
-  color: #0c1c7a;
+  color: #283580;
   font-weight: bold;
 }
 
-/* Mostra o submenu quando o mouse passa sobre o <li> pai */
+/*  Exibe submenu ao passar o mouse */
 nav > ul > li:hover > .submenu {
   display: block;
 }
 
-/* --- Conteúdo Principal --- */
+/* Área principal do conteúdo */
 main {
   max-width: 900px;
- 
-  margin: 2rem auto;
+  margin: 200px auto 2rem auto; /* Espaço para o cabeçalho fixo */
   padding: 20px;
-  background-color: rgba(255, 255, 255, 0.95); /* Fundo branco com leve transparência */
+  background-color: rgba(255, 255, 255, 0.95);
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
   border-radius: 10px;
 }
 
-
-
+/* Seções internas do conteúdo */
 section {
-  padding-top: 20px; /* Espaçamento para o conteúdo dentro da seção */
+  padding-top: 20px;
   margin-bottom: 40px;
+  scroll-margin-top: 200px; /* Compensa o cabeçalho fixo ao navegar por âncoras */
 }
 
+/*  Títulos das seções */
 section h2 {
-  color: #222;
-  border-bottom: 2px solid #00c3ff;
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  color: #1a5da5;
+  border-bottom: 2px solid #007bff;
   padding-bottom: 8px;
   margin-bottom: 20px;
+  text-transform: uppercase;
 }
 
-/* --- Lista de Projetos (seção Portfólio) --- */
+/*  Parágrafos */
+p {
+  line-height: 1.6;
+  margin-bottom: 15px;
+  text-align: justify;
+}
+
+/*  Lista de projetos no portfólio */
 #portfolio ul {
   list-style-type: circle;
   padding-left: 20px;
 }
 
+/*  Links dos projetos */
 #portfolio ul a {
-    color: #007bff;
-    text-decoration: none;
-    font-weight: bold;
+  color: #007bff;
+  text-decoration: none;
+  font-weight: bold;
 }
 
+/*  Hover nos links dos projetos */
 #portfolio ul a:hover {
-    text-decoration: underline;
-    color: #0056b3;
+  text-decoration: underline;
+  color: #0056b3;
 }
 
-/* --- Formulário --- */
+/*  Descrição adicional dos projetos */
+.project-description {
+  font-size: 0.9em;
+  color: #555;
+  margin-top: 5px;
+}
+
+/*  Estilo do formulário de contato */
 .form-group {
   margin-bottom: 1rem;
 }
+
 .form-group label {
   display: block;
   margin-bottom: 5px;
   font-weight: bold;
 }
+
 .form-group input,
 .form-group textarea {
   width: 100%;
@@ -171,37 +200,55 @@ section h2 {
   font-size: 16px;
 }
 
+/*  Botão de envio do formulário */
 button[type="submit"] {
   background-color: #007bff;
   color: white;
   padding: 12px 25px;
   border: none;
   border-radius: 5px;
-  cursor: pointer;/* Botão de envio estilizado */
-  font-weight: bold; /* Negrito para destacar o botão */
+  cursor: pointer;
+  font-weight: bold;
   font-size: 1rem;
   transition: background-color 0.3s ease;
 }
 
-button[type="submit"]:hover { /*efeito de hover no botão de envio*/
-  background-color: #0056b3;/* Tema escuro mantido intencionalmente para destacar visualmente esta seção */
+button[type="submit"]:hover {
+  background-color: #0056b3;
 }
+
+/*  Responsividade para tablets */
 @media (max-width: 768px) {
- section{
-     margin: 50px; /* Reduz a margem para telas menores */
-    width: 100%;
+  h1 {
+    font-size: 1.8rem;
   }
 
-  body {
-    margin: 20px; /* Reduz a margem para telas menores */
-    width: 100%;
+  nav ul {
+    flex-direction: column;
+    align-items: center;
   }
+}
 
-  header ul {
-    width: 100%; /* Ocupa quase toda a largura da tela */
-  }
-
+/*  Responsividade para celulares */
+@media (max-width: 480px) {
   h1 {
     font-size: 1.5rem;
+  }
+
+  .container {
+    padding: 15px;
+    border-radius: 5px;
+  }
+
+  .estilo {
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+    font-size: 0.95rem;
+  }
+
+  p, .project-description {
+    font-size: 0.9rem;
   }
 }
